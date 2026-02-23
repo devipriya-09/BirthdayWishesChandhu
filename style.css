@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  text-align: center;
+}
+
+.intro {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  background: gold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+.main {
+  padding: 40px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.message {
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 20px;
+}
+
+.dad {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+.emoji {
+  margin-top: 20px;
+  font-size: 40px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
