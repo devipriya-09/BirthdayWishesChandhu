@@ -1,4 +1,3 @@
-/* Reset & basic setup */
 * {
   margin: 0;
   padding: 0;
@@ -7,13 +6,21 @@
 
 body {
   font-family: 'Lora', serif;
-  background: linear-gradient(120deg, #1a1a2e, #162447);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #fff;
+  background: linear-gradient(-45deg, #1a1a2e, #162447, #0f3460, #53354a);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  perspective: 1000px;
   overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 .container {
@@ -32,11 +39,7 @@ body {
   cursor: pointer;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
-}
-
-.envelope:hover {
-  transform: scale(1.05);
+  transform-style: preserve-3d;
 }
 
 .flap {
@@ -48,11 +51,12 @@ body {
   left: 0;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top center;
-  transition: transform 1s;
+  transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
+/* Bounce flap open */
 .envelope.open .flap {
-  transform: rotateX(180deg);
+  transform: rotateX(-180deg);
 }
 
 /* Message */
@@ -72,6 +76,7 @@ body {
   font-size: 1.2rem;
   line-height: 1.5;
   white-space: pre-line;
+  transition: opacity 1s ease-in;
 }
 
 /* Sparkles */
@@ -88,8 +93,8 @@ body {
   height: 4px;
   background: #d4af37;
   border-radius: 50%;
-  animation: sparkle 2s infinite;
   opacity: 0;
+  animation: sparkle 2s infinite;
 }
 
 @keyframes sparkle {
