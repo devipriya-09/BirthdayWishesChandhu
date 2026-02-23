@@ -1,67 +1,98 @@
-body {
+/* Reset & basic setup */
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: white;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lora', serif;
+  background: linear-gradient(120deg, #1a1a2e, #162447);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
   text-align: center;
 }
 
-.intro {
-  height: 100vh;
+/* Envelope */
+.envelope {
+  width: 280px;
+  height: 160px;
+  background: #fff;
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.envelope:hover {
+  transform: scale(1.05);
+}
+
+.flap {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: #d4af37;
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 1s;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+/* Message */
+.message {
+  opacity: 0;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #fff;
+  color: #162447;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  white-space: pre-line;
 }
 
-button {
-  padding: 15px 30px;
-  font-size: 18px;
-  border: none;
-  border-radius: 30px;
-  background: gold;
-  cursor: pointer;
-  transition: 0.3s;
+/* Sparkles */
+.sparkles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-button:hover {
-  transform: scale(1.1);
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #d4af37;
+  border-radius: 50%;
+  animation: sparkle 2s infinite;
+  opacity: 0;
 }
 
-.hidden {
-  display: none;
-}
-
-.main {
-  padding: 40px;
-  animation: fadeIn 2s ease-in-out;
-}
-
-.message {
-  max-width: 700px;
-  margin: 20px auto;
-  font-size: 20px;
-}
-
-.dad {
-  margin-top: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  animation: pulse 2s infinite;
-}
-
-.emoji {
-  margin-top: 20px;
-  font-size: 40px;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-@keyframes pulse {
-  0% {transform: scale(1);}
-  50% {transform: scale(1.1);}
-  100% {transform: scale(1);}
+@keyframes sparkle {
+  0%, 100% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1); opacity: 1; }
 }
