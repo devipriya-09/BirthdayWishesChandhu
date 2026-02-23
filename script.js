@@ -2,8 +2,9 @@ const btn = document.getElementById('btn');
 const main = document.querySelector('.main');
 const intro = document.querySelector('.intro');
 const confettiCanvas = document.getElementById('confetti');
+const balloonsContainer = document.getElementById('balloons');
 
-// Function to create continuous falling pink dots
+// Pink dots confetti
 function startPinkDots() {
   const ctx = confettiCanvas.getContext('2d');
   confettiCanvas.width = window.innerWidth;
@@ -12,7 +13,6 @@ function startPinkDots() {
   const dots = [];
   const colors = ['#ff69b4', '#ffc0cb', '#ff1493'];
 
-  // Generate initial dots
   for (let i = 0; i < 150; i++) {
     dots.push({
       x: Math.random() * confettiCanvas.width,
@@ -46,15 +46,31 @@ function startPinkDots() {
   animate();
 }
 
-// Start celebration on button click
+// Floating balloons
+function startBalloons() {
+  const balloonImages = ['images/balloon1.png','images/balloon2.png','images/balloon3.png'];
+  const numBalloons = 12;
+
+  for (let i = 0; i < numBalloons; i++) {
+    const balloon = document.createElement('img');
+    balloon.src = balloonImages[Math.floor(Math.random() * balloonImages.length)];
+    balloon.className = 'balloon';
+    balloon.style.left = Math.random() * 100 + 'vw';
+    balloon.style.width = 30 + Math.random() * 40 + 'px';
+    balloon.style.animationDuration = 8 + Math.random() * 5 + 's';
+    balloonsContainer.appendChild(balloon);
+  }
+}
+
+// Click to celebrate
 btn.addEventListener('click', () => {
   intro.classList.add('hidden');
   main.classList.remove('hidden');
 
-  // Start continuous pink dots
   startPinkDots();
+  startBalloons();
 
-  // Optional: extra confetti burst
+  // Extra confetti burst
   const myConfetti = confetti.create(confettiCanvas, { resize: true, useWorker: true });
   myConfetti({
     particleCount: 100,
