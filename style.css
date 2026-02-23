@@ -1,76 +1,67 @@
-* {
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  text-align: center;
 }
 
-body {
-  font-family: 'Lora', serif;
+.intro {
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(-45deg, #1a1a2e, #162447, #0f3460, #53354a);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  overflow: hidden;
-  color: #fff;
 }
 
-@keyframes gradientShift {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-.container {
-  text-align: center;
-  position: relative;
-}
-
-#view-btn {
+button {
   padding: 15px 30px;
-  font-size: 1.3rem;
-  background: #d4af37;
-  color: #162447;
+  font-size: 18px;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
+  background: gold;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
+  transition: 0.3s;
 }
 
-#view-btn:hover {
-  transform: scale(1.05);
+button:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+.main {
+  padding: 40px;
+  animation: fadeIn 2s ease-in-out;
 }
 
 .message {
-  margin-top: 30px;
-  font-size: 1.5rem;
-  line-height: 1.6;
-  color: #fff;
-  opacity: 0;
-  transition: opacity 0.5s;
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 20px;
 }
 
-.confetti {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
+.dad {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
 }
 
-.confetti-piece {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #d4af37;
-  opacity: 0.9;
-  animation: fall 3s linear infinite;
+.emoji {
+  margin-top: 20px;
+  font-size: 40px;
 }
 
-@keyframes fall {
-  0% {transform: translateY(-10px) rotate(0deg);}
-  100% {transform: translateY(100vh) rotate(360deg);}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.1);}
+  100% {transform: scale(1);}
 }
