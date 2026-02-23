@@ -11,7 +11,7 @@ body {
   position: relative;
 }
 
-/* Intro card */
+/* Intro and main card */
 .intro, .main {
   background: rgba(255, 255, 255, 0.95);
   padding: 2rem 3rem;
@@ -33,37 +33,43 @@ button {
   transition: transform 0.2s ease;
 }
 
-button:hover {
-  transform: scale(1.1);
-}
+button:hover { transform: scale(1.1); }
+.hidden { display: none; }
+.message { font-size: 1.1rem; margin: 1rem 0; }
+.dad { font-weight: bold; font-size: 1.2rem; margin: 1rem 0; }
+.emoji { font-size: 2rem; margin-top: 1rem; }
 
-.hidden {
-  display: none;
-}
-
-.message {
-  font-size: 1.1rem;
-  margin: 1rem 0;
-}
-
-.dad {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin: 1rem 0;
-}
-
-.emoji {
-  font-size: 2rem;
-  margin-top: 1rem;
-}
-
-/* Full page confetti canvas */
+/* Canvas for pink dots */
 #confetti {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
   z-index: 5;
+}
+
+/* Balloon container behind card */
+#balloons {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2; /* behind text */
+  overflow: hidden;
+}
+
+/* Balloon animation */
+.balloon {
+  position: absolute;
+  bottom: -100px; /* start below screen */
+  opacity: 0.6;   /* semi-transparent */
+  animation: floatUp linear infinite;
+  user-select: none;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-120vh) rotate(360deg); }
 }
